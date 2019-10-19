@@ -1,5 +1,8 @@
 language: python
 
+services:
+- docker
+
 os:
   - linux
   - osx
@@ -10,15 +13,15 @@ python:
   - "3.7"
   - "nightly"  # nightly build
 
-jobs:
+matrix:
   include:
-    - name: "Python 3.7.4 on Windows"
-      os: windows           # Windows 10.0.17134 N/A Build 17134
-      language: shell       # 'language: python' is an error on Travis CI Windows
+    - os: windows
+      language: sh
+      python: "3.x"
       before_install:
-        - choco install python --version 3.7.4
-        - python -m pip install --upgrade pip
-      env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+        - choco install python3 --params "/InstallDir:C:\\Python"
+        - export PATH="/c/Python:/c/Python/Scripts:$PATH"
+        - python -m pip install --upgrade pip wheel
 
 install:
   - pip3 install -r requirements.txt
