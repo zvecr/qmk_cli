@@ -33,8 +33,7 @@ matrix:
     - os: linux
       name: docker-arch
       before_install:
-        - echo 'sudo docker run --rm -it archlinux/base /bin/bash -c "pacman -Sy --noconfirm python3 python-pip && /bin/bash"' | sudo tee -a /usr/local/bin/python3
-        - sudo chmod 777 /usr/local/bin/python3
+        - sudo docker run --rm -it archlinux/base /bin/bash -c 'pacman -Sy --noconfirm python3 python-pip && /bin/bash'
 
 install:
   - pip3 install -r requirements.txt
