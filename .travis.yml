@@ -20,7 +20,8 @@ matrix:
       python: "3.x"
       before_install:
         - choco install python3 --params "/InstallDir:C:\\Python"
-        - ls /c/Python
+        - echo 'python $@' >> /c/Python/python3
+        - chmod 777 /c/Python/python3
       env: PATH=/c/Python:/c/Python/Scripts:$PATH
 
 install:
