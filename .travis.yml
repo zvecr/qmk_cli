@@ -32,7 +32,6 @@ matrix:
 
     - os: linux
       name: docker-arch
-      python: "3.x"
       before_install:
         - echo 'docker run --rm -it archlinux/base /bin/bash -c "pacman -Sy --noconfirm python3 python-pip && /bin/bash"' >> /usr/local/bin/python3
         - chmod 777 /usr/local/bin/python3
